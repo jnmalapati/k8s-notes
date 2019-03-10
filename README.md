@@ -151,3 +151,34 @@ Updating the version -
   - kubectl rollout status deployment/myapp-deployment
   - kubectl rollout history deployment/myapp-deployment
 
+#### kubernetes networking 101
+   All containers / PODS can communicate to one another without NAT
+   All nodes can communicate with all containers and vice-versa without NAT 
+- Cluster Networking
+
+#### Services
+  - enable communication with varoius components within and outside of the application
+  - connect applications together with other applications / users
+
+ssh into the kubernetes node - can curl the pod network ip, would work
+
+Service 
+  - To listen to a port on node, and forward the request on that port, to a port running the web application on pod
+
+Service Types
+  - NodePort
+  - ClusterIP
+  - LoadBalancer
+
+
+port on pod - 80 ( Web server running - target port)
+port on service - 80 (port)
+port on node - 30008( node port) ( should be within 30000- 32767 range)
+
+
+```
+  kubectl create -f service-definition.yml
+
+  kubectl get services
+
+```
